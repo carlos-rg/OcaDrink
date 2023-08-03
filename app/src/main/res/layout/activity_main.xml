@@ -28,7 +28,6 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:clickable="true"
-        android:onClick="RollDice"
         android:contentDescription="@string/dice_images"
         app:srcCompat="@drawable/dice5" />
 
