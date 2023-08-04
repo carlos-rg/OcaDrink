@@ -16,17 +16,17 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:fontFamily="casual"
-        android:text="@string/ocadrink"
+        android:text="@string/oca_drink"
         android:textColor="#FF9800"
         android:textSize="40sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/FraseRandom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:text="@string/textview"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
 </LinearLayout>

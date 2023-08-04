@@ -16,7 +16,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:fontFamily="casual"
-        android:text="@string/ocadrink"
+        android:text="@string/oca_drink"
         android:textColor="#FF9800"
         android:textSize="40sp"
         android:textStyle="bold" />
@@ -24,7 +24,7 @@
     <ImageView
         android:id="@+id/DiceImg"
         android:layout_width="match_parent"
-        android:layout_height="390dp"
+        android:layout_height="358dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:clickable="true"
@@ -34,12 +34,13 @@
     <Button
         android:id="@+id/RandBoxButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:background="@color/orange"
         android:fontFamily="casual"
-        android:text="@string/random_box"
+        android:text="@string/randombox"
         android:textAlignment="gravity"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

@@ -3,4 +3,8 @@
     <string name="ocadrink">OcaDrink</string>
     <string name="dice_images">Dice images</string>
     <string name="random_box">Random Box</string>
+    <string name="textview">TextView</string>
+    <string name="tira_el_dado">TIRA EL DADO</string>
+    <string name="oca_drink">Oca Drink</string>
+    <string name="randombox">RANDOMBOX</string>
 </resources>

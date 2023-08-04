@@ -2,10 +2,9 @@ package com.carlosreal.ocadrink;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,10 +16,11 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     ImageView Dice;
-    Button RandomBox;
+    Button RandomBox, DiceButton;
     private Random RandomDice;
+    private int TotalChanges = 20;
     private Handler HandlerDice;
-    private int DiceValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +29,8 @@ public class MainActivity extends AppCompatActivity {
         Dice = findViewById(R.id.DiceImg);
         RandomBox = findViewById(R.id.RandBoxButton);
         RandomDice = new Random();
-        HandlerDice = new Handler();
 
-        Dice.setOnClickListener(view -> {
-            RollDice();
-        });
+        Dice.setOnClickListener(view -> RollDice());
 
         RandomBox.setOnClickListener(view -> {
             Intent RandomIntent = new Intent(this, RandomboxActivity.class);
@@ -43,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void RollDice() {
         // Desactivar el botón mientras se realiza la animación
-        Dice.setEnabled(false);
 
         // Obtener una serie de valores aleatorios durante la animación
         final int[] DiceValues = new int[20];
@@ -51,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             DiceValues[i] = RandomDice.nextInt(6) + 1;
         }
 
-        // Crear la animación con una duración de 500ms por cada valor aleatorio
+        // Crear la animación con una duración de 100ms por cada valor aleatorio
         final int animationDuration = 100;
         final Animation.AnimationListener animationListener = new Animation.AnimationListener() {
             int CurrentIndex = 0;
@@ -87,26 +83,37 @@ public class MainActivity extends AppCompatActivity {
         Dice.startAnimation(rotateAnimation);
     }
 
-/*    public void RollDice(View view){
-        view.setEnabled(false);
-        AnimateDiceRoll();
+/*    public void RollDice(){
+        Dice.setEnabled(false);
+        AnimateDiceRoll(0);
     }*/
 
-/*    public void AnimateDiceRoll(){
-        HandlerDice.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                RandomDice = new Random();
-                DiceValue = RandomDice.nextInt(6) + 1;
-                int drawableId = getResources().getIdentifier("dice" + DiceValue, "drawable", getPackageName());
-                Dice.setImageResource(drawableId);
+/*    public void AnimateDiceRoll(final int CurrentRoll){
+        if (CurrentRoll < 20) { // Rolling 20 times before showing the final result
+            // Update the image with a random value
+            int DiceValue = RandomDice.nextInt(6) + 1;
+            int DrawableId = getResources().getIdentifier("dice" + DiceValue, "drawable", getPackageName());
+            Dice.setImageResource(DrawableId);
 
-                if (DiceValue > 1) {
-                    AnimateDiceRoll();
-                } else {
-                    findViewById(R.id.DiceImg).setEnabled(true);
+            // Schedule the next change after a short delay (100ms)
+            new CountDownTimer(100, 100) {
+                public void onFinish() {
+                    AnimateDiceRoll(CurrentRoll + 1);
                 }
-            }
-        }, 100);
+
+                public void onTick(long millisUntilFinished) {
+                    // Do nothing
+                }
+            }.start();
+        } else {
+            // After rolling is done, show the final random result
+            int DiceValue = RandomDice.nextInt(6) + 1;
+            int DrawableId = getResources().getIdentifier("dice" + DiceValue, "drawable", getPackageName());
+            Dice.setImageResource(DrawableId);
+
+            // Enable the button after the rolling process is complete
+            Dice.setEnabled(true);
+        }
+
     }*/
 }
